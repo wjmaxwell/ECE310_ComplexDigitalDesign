@@ -1,0 +1,33 @@
+module adler32 (
+  input         rst_n, clock,
+  input         size_valid,
+  input  [31:0] size,
+  input         data_valid,
+  input  [ 7:0] data,
+  output        checksum_valid,
+  output [31:0] checksum
+);
+
+wire [31:0] size_count;
+
+datapath dp (
+  rst_n,
+  clock,
+  data_valid,
+  data,
+  size_count,
+  checksum_valid,
+  checksum
+);
+
+controller ctrl (
+  rst_n,
+  clock,
+  size_valid,
+  data_valid,
+  size,
+  checksum_valid,
+  size_count
+);
+
+endmodule

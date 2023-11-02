@@ -1,0 +1,55 @@
+module datapath (
+  input rst_n, clock,
+  input data_valid,
+  input [7:0] data,
+  input [31:0] size_count,
+  input checksum_valid,
+  output [31:0] checksum
+);
+ 
+  reg [15:0] B, A;
+  wire [15:0] b_next, a_next, mod_B, mod_A;
+
+  assign a_next = A + data;
+  assign b_next = B + a_next;
+
+  always @( posedge clock ) begin
+    if( !rst_n || ( size_count == 0 && !checksum_valid ) ) begin
+      B <= 0;
+      A <= 1;
+    end
+    else begin
+      if( size_count > 0 && data_valid ) begin
+        B <= b_next;
+        A <= a_next;
+
+      
+      end
+    end
+  end
+
+
+  modulo_sum mA ( A, mod_A );
+  modulo_sum mB ( B, mod_B );
+ 
+
+  assign checksum = {mod_B, mod_A};
+
+endmodule
+
+
+module modulo_sum (
+  input [15:0] num,
+  output reg [15:0] mod 
+);
+
+  always @(*) begin
+    if( num >= 65521 ) begin
+      mod <= num - 65521;
+    end
+    else begin
+      mod <= num;
+    end
+  end
+
+endmodule

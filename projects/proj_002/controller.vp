@@ -1,0 +1,32 @@
+module controller (
+  input rst_n, clock,
+  input size_valid,
+  input data_valid,
+  input [31:0] size,
+  output reg checksum_valid,
+  output reg [31:0] size_count
+);
+
+
+always @( posedge clock ) begin
+  if( !rst_n ) begin
+    size_count <= 0;
+    checksum_valid <= 0;
+  end
+  else begin
+    if( size_valid ) begin
+      size_count <= size;
+    end  
+    if( data_valid ) begin
+      size_count <= size_count - 1;
+      if( size_count == 1 ) begin
+        checksum_valid <= 1;
+      end
+    end
+    else begin
+      checksum_valid <= 0;
+    end
+  end
+end 
+
+endmodule
