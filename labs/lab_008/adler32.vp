@@ -1,0 +1,16 @@
+module adler32 (
+  input         rst_n, clock,
+  input         size_valid,
+  input  [31:0] size,
+  input         data_valid,
+  input  [ 7:0] data,
+  output        checksum_valid,
+  output [31:0] checksum
+);
+`protected
+    MTI!#eH_2#pzY9ZOVi'VKX[}!uka$V*=zlVYC[.AX[[^?+77#n^<a}<#B;^]P2Ri$o]Z?O#EUujT
+    >kwo<7zw7Ok{m[U[Xaria<'Z*QQJuyY3]5}IAG'+mW7^Q{Zo#Z6^WHC)^;lBNm=D@(,@[C]'B}^K
+    1HCrT*7Vp}|E_?~G*]\?T\ica$?;DiHmk5e7"g(>asVwow*';a-K,O25[pacIw2B'1OZ'3R^k&Qr
+    pK}~<xx#[WB1*ilBKT({_TY_%i-<;Ir]@+O-;6pm=Ulj*R_9q7sUK\Yw]
+`endprotected
+endmodule
