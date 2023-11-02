@@ -1,4 +1,4 @@
-# wjmaxwe2
-ECE310 Spring 2023 repo for wjmaxwe2
+# ECE 310
+Complex Digital Design
 
-Contains projects, homework, and lecture notes from ECE 310
+Contains projects, labs, and homeworks
